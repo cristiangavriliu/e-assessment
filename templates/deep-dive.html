@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Dive Fragen</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/theme/monokai.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/python/python.min.js"></script>
+    <script src="/static/js/deep-dive.js"></script>
+    <input type="hidden" id="task-id" value="{{ task_id }}">
+</head>
+
+<body class="dark-mode">
+<div class="container mt-5 dark-mode">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="back-arrow">
+            <a href="/task/{{ task_id }}"><i class="bi bi-arrow-left"></i></a>
+        </div>
+        <h1 class="text-center dark-mode" style="margin-left: -40px">Deep Dive</h1>
+        <div></div> <!-- Empty div to balance the flex container -->
+    </div>
+
+    <!-- Aufgabenstellung und Lösung -->
+    {% set show_task = true %}
+    {% for question in questions %}
+    {% if question.type == 'cloze' %}
+    {% set show_task = false %}
+    {% endif %}
+    {% endfor %}
+
+    {% if show_task %}
+    <div class="code-container my-4 dark-mode">
+        <h4 class="dark-mode">Aufgabenstellung</h4>
+        <p id="task-description" class="dark-mode"></p>
+        <h4 class="dark-mode">Lösungsvorschlag</h4>
+        <textarea id="task-solution" class="form-control dark-mode" readonly></textarea>
+    </div>
+    {% endif %}
+
+    <!-- Fragen -->
+    <h4 class="dark-mode">Deep Dive Fragen</h4>
+    {% for question in questions %}
+    <div class="question-container my-4 dark-mode">
+        {% if question.type == 'cloze' %}
+        <p class="dark-mode">Frage {{ loop.index }}:</p>
+        <div>
+            {% for part in question.question.split(" ") %}
+            {% if part in ["{V1}", "{V2}", "{V3}", "{V4}"] %}
+            <input type="text" name="{{ part }}" class="form-control d-inline-block w-auto mx-1 dark-mode"
+                   placeholder="Eingabe">
+            {% else %}
+            {{ part }}
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="dark-mode">Frage {{ loop.index }}: {{ question.question }}</p>
+        {% if question.type == 'single_choice' %}
+        <div>
+            {% for option in question.options %}
+            <div class="form-check">
+                <input class="form-check-input dark-mode" type="radio" name="answer{{ loop.index }}"
+                       id="answer{{ loop.index }}-{{ loop.index0 }}" value="{{ option }}">
+                <label class="form-check-label dark-mode" for="answer{{ loop.index }}-{{ loop.index0 }}">
+                    {{ option }}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+        {% elif question.type == 'multiple_choice' %}
+        <div>
+            {% for option in question.options %}
+            <div class="form-check">
+                <input class="form-check-input dark-mode" type="checkbox" name="answer{{ loop.index }}[]"
+                       id="answer{{ loop.index }}-{{ loop.index0 }}" value="{{ option }}">
+                <label class="form-check-label dark-mode" for="answer{{ loop.index }}-{{ loop.index0 }}">
+                    {{ option }}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <input type="text" id="answer{{ loop.index }}" class="form-control dark-mode">
+        {% endif %}
+        {% endif %}
+        <button class="btn btn-dark-mode mt-2 submit-button" data-index="{{ loop.index0 }}">Submit</button>
+        <p id="feedback{{ loop.index }}" class="mt-2 dark-mode"></p>
+    </div>
+    {% endfor %}
+</div>
+
+<button id="floating-button" class="floating-button" onclick="togglePopupMenu()">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div id="popup-menu" class="popup-menu">
+    <a href="/task/task1">Task 1</a>
+    <a href="/task/task2">Task 2</a>
+    <a href="/task/task3">Task 3</a>
+    <a href="/task/task4">Task 4</a>
+    <a href="/task/task5">Task 5</a>
+    <a href="/assessment">Learning Analytics</a>
+</div>
+</body>
+
+</html>

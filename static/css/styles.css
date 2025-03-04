@@ -1,0 +1,260 @@
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.container.dark-mode {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+h1.dark-mode {
+    color: #e0e0e0;
+}
+
+.form-control.dark-mode {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+/* Standard Button Styles */
+.btn-dark-mode {
+    background-color: #3a3a3a !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #555 !important;
+}
+
+.btn-dark-mode:hover {
+    background-color: #555 !important;
+    color: #ffffff !important;
+}
+
+.btn-dark-mode:active,
+.btn-dark-mode:focus,
+.btn-dark-mode:focus:active {
+    background-color: #555 !important;
+    color: #ffffff !important;
+    border: 1px solid #555 !important;
+    box-shadow: none !important;
+}
+
+/* Disabled Button Styles */
+.btn-dark-mode:disabled {
+    background-color: #3a3a3a !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #555 !important;
+    cursor: not-allowed !important;
+}
+
+/* Disabled Button Hover Effect */
+.btn-dark-mode:disabled:hover {
+    background-color: #3a3a3a !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #555 !important;
+}
+
+.CodeMirror {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    font-size: 1rem;
+    height: auto;
+}
+
+.dark-mode .question-container {
+    border: 1px solid #555;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #2c2c2c;
+}
+
+.dark-mode .question-container p {
+    color: #e0e0e0;
+}
+
+.dark-mode .question-container input {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+.dark-mode .form-control.d-inline-block.w-auto.mx-1[placeholder="Eingabe"] {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 2px 5px;
+    height: 1.5em;
+    font-size: 0.875em;
+}
+
+.dark-mode .form-control.d-inline-block.w-auto.mx-1[placeholder="Eingabe"]::placeholder {
+    color: #888;
+}
+
+.dark-mode .question-container {
+    line-height: 1.5;
+}
+
+.dark-mode .form-control.d-inline-block.w-auto.mx-1 {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.dark-mode .question-container button {
+    background-color: #3a3a3a !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #555 !important;
+}
+
+.dark-mode .question-container button:hover {
+    background-color: #555 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .question-container button:active,
+.dark-mode .question-container button:focus,
+.dark-mode .question-container button:focus:active {
+    background-color: #555 !important;
+    color: #ffffff !important;
+    border: 1px solid #555 !important;
+    box-shadow: none !important;
+}
+
+#output.dark-mode {
+    background-color: transparent;
+    color: #e0e0e0;
+    border: none;
+    padding: 10px 0;
+}
+
+/* Stile für den Reset-Button */
+.btn-reset {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.btn-reset img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Abstand zu den Buttons */
+.button-group {
+    margin-top: 15px;
+}
+
+/* Floating button */
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Popup menu */
+.popup-menu {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background-color: #3a3a3a;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.popup-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.popup-menu a:hover {
+    background-color: #1685e3;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    width: 30px;
+    height: 30px;
+}
+
+/* Loading circle */
+#loading-circle {
+    display: none;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #6e6e6e;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Custom legend */
+.custom-legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px;
+    border: 1px solid;
+}
+
+.back-arrow {
+    margin-right: 15px;
+    font-size: 1.5rem;
+}
+
+.back-arrow a {
+    color: #fff; /* Adjust color as needed */
+    text-decoration: none;
+}
+
+.back-arrow a:hover {
+    text-decoration: underline;
+}
