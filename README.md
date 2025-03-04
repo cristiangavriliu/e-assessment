@@ -1,7 +1,7 @@
 # E-Learning and Assessment Web Application
 
 ## Project Overview
-This project was developed as part of a Group Project during the **E-Assessment and E-Learning** course at **Ludwig Maximilian University of Munich (LMU)** in the **Summer Semester of 2024**. The goal of this project is to build an interactive **e-learning and assessment web application** that facilitates learning basic coding principles.
+This project was developed as part of a Group Project during the **E-Assessment & Learning Analytics** course at **Ludwig Maximilian University of Munich (LMU)** in the **Summer Semester of 2024**. The goal of this project is to build an interactive **e-learning and assessment web application** that facilitates learning basic coding principles.
 
 ## Features
 
