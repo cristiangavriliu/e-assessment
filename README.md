@@ -6,7 +6,7 @@ This project was developed as part of a Group Project during the **E-Assessment 
 ## Features
 
 - **Task-based coding exercises**: Users are given coding challenges to complete.
-- **Real-time feedback**: Instant evaluation of coding solutions.
+- **Real-time feedback**: Instant evaluation of coding solutions using OpenAI's API.
 - **Deep dive questions**: Follow-up questions to enhance learning.
 - **Learning analytics**: Visual representation of progress and performance.
 
@@ -29,6 +29,7 @@ This project was developed as part of a Group Project during the **E-Assessment 
 - **Python**: Backend development.
 - **Flask**: Web framework for handling requests.
 - **Jinja2**: Template rendering engine.
+- **OpenAI API**: Used for generating feedback on user submissions.
 
 ### Data Storage
 
@@ -45,13 +46,13 @@ This project was developed as part of a Group Project during the **E-Assessment 
 
 ## Important Files
 
-- `app.py`: Main application script.
-- `deepdive.py`: Handles deep dive questions.
-- `LA_manager.py`: Learning analytics management.
-- `tasks.py`: Manages coding tasks.
-- `templates/`: HTML templates.
-- `static/`: CSS, JavaScript, images.
-- `requirements.txt`: List of dependencies.
+- `app.py`: Main application script handling routes, API calls, and user interactions. Ensure the OpenAI API key is configured here.
+- `deepdive.py`: Manages deep dive questions to assess user understanding.
+- `LA_manager.py`: Handles learning analytics and performance tracking.
+- `tasks.py`: Manages coding tasks and challenge assignments.
+- `templates/`: Contains HTML templates for rendering the UI.
+- `static/`: Stores static assets such as CSS, JavaScript, and images.
+- `requirements.txt`: Lists required dependencies for the application.
 
 ## Setup Instructions
 
@@ -59,6 +60,7 @@ This project was developed as part of a Group Project during the **E-Assessment 
 
 - **Python 3.6+**
 - **Virtualenv**
+- **OpenAI API Key** (required for real-time feedback)
 
 ### Cloning the Repository
 
@@ -100,6 +102,21 @@ pip install -r requirements.txt
 ```bash
 pip freeze > requirements.txt
 ```
+
+### Configuring the OpenAI API Key
+To enable real-time feedback, update the **API key** in `app.py` where necessary.
+
+## Dependencies
+The application requires the following packages (from `requirements.txt`):
+
+- **Flask (3.0.3)** - Web framework for Python
+- **Jinja2 (3.1.4)** - Templating engine
+- **Werkzeug (3.0.3)** - WSGI utility library
+- **OpenAI (0.28)** - API client for OpenAI-based feedback
+- **Click (8.1.7)** - Command-line interface support
+- **Blinker (1.8.2)** - Event signaling support
+- **Itsdangerous (2.2.0)** - Security-related utilities
+- **MarkupSafe (2.1.5)** - String escaping and security improvements
 
 ## Running the Application
 
