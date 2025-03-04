@@ -10,8 +10,9 @@ This project aims to create an e-learning and assessment web application to help
 - Learning analytics and assessment overview
 
 ## Image Collection
-![img.png](README_IMG/img.png)
-![img.png](README_IMG/img.png)
+
+![img.png](README_IMG/S1.png)
+
 
 ## Important Files
 
