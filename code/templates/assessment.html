@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Data</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/code/staticyles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/code/staticessment.js"></script>
+</head>
+
+<body class="dark-mode">
+
+<button id="floating-button" class="floating-button" onclick="togglePopupMenu()">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div id="popup-menu" class="popup-menu">
+    <a href="/task/task1">Task 1</a>
+    <a href="/task/task2">Task 2</a>
+    <a href="/task/task3">Task 3</a>
+    <a href="/task/task4">Task 4</a>
+    <a href="/task/task5">Task 5</a>
+    <a href="/assessment">Learning Analytics</a>
+</div>
+
+<div class="container mt-5 dark-mode">
+    <h1 class="text-center dark-mode">Assessment Overview for {{ user_id }}</h1>
+
+    <h2 class="mt-4 dark-mode">Total Time Spent on Tasks</h2>
+    <canvas id="timeSpentChart" width="400" height="200"></canvas>
+
+    <h2 class="mt-4 dark-mode">Attempts per Question</h2>
+    <div id="attemptsChartsContainer"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Data passed from Flask
+        const data = {{ data | tojson }};
+
+        const taskLabels = [];
+        const timeSpentData = [];
+
+        for (const taskId in data.Tasks) {
+            const task = data.Tasks[taskId];
+            taskLabels.push(`Task: ${taskId}`);
+            timeSpentData.push(task.TimeTaken);
+        }
+
+        const timeSpentCtx = document.getElementById('timeSpentChart').getContext('2d');
+        const timeSpentChart = new Chart(timeSpentCtx, {
+            type: 'bar',
+            data: {
+                labels: taskLabels,
+                datasets: [{
+                    label: 'Time Spent (minutes)',
+                    data: timeSpentData.map(time => Math.round((time / 60) * 100) / 100),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false  // Disable the default legend
+                    }
+                }
+            }
+        });
+
+        const attemptsChartsContainer = document.getElementById('attemptsChartsContainer');
+
+        for (const taskId in data.Tasks) {
+            const task = data.Tasks[taskId];
+
+            const chartContainer = document.createElement('div');
+            chartContainer.classList.add('mt-4');
+            const chartTitle = document.createElement('h3');
+            chartTitle.classList.add('dark-mode');
+            chartTitle.innerHTML = `Task: ${taskId} <a href="/detailed_assessment/${taskId}" class="btn btn-info btn-sm ml-2 rounded-circle"><i class="bi bi-info-circle"></i></a>`;
+            chartContainer.appendChild(chartTitle);
+
+            const canvas = document.createElement('canvas');
+            canvas.id = `attemptsChart-${taskId}`;
+            chartContainer.appendChild(canvas);
+            attemptsChartsContainer.appendChild(chartContainer);
+
+            const legendContainer = document.createElement('div');
+            legendContainer.classList.add('custom-legend', 'mt-4');
+            legendContainer.innerHTML = `
+                    <span class="legend-item">
+                        <span class="legend-color" style="background-color: rgba(75, 192, 192, 0.2); border-color: rgba(75, 192, 192, 1);"></span>
+                        Answered Correctly
+                    </span>
+                    <span class="legend-item">
+                        <span class="legend-color" style="background-color: rgba(255, 99, 132, 0.2); border-color: rgba(255, 99, 132, 1);"></span>
+                        Not Answered Correctly
+                    </span>
+                `;
+            chartContainer.appendChild(legendContainer);
+
+            const questionLabels = [];
+            const attemptsData = [];
+            const backgroundColors = [];
+
+            task.Questions.forEach((question, index) => {
+                if (index === 0) {
+                    questionLabels.push(`Main Task`);
+                } else {
+                    questionLabels.push(`Deep Dive Q${index}`);
+                }
+                attemptsData.push(question.Attempts);
+                backgroundColors.push(question.Response ? 'rgba(75, 192, 192, 0.2)' : 'rgba(255, 99, 132, 0.2)');
+            });
+
+            const ctx = canvas.getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: questionLabels,
+                    datasets: [{
+                        label: 'Attempts',
+                        data: attemptsData,
+                        backgroundColor: backgroundColors,
+                        borderColor: backgroundColors.map(color => color.replace('0.2', '1')),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false  // Disable the default legend
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>
+</body>
+
+</html>

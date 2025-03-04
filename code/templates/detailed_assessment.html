@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Assessment Data</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/code/staticyles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/code/staticessment.js"></script>
+</head>
+
+<body class="dark-mode">
+
+<div class="container mt-5 dark-mode">
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="back-arrow">
+      <a href="/assessment"><i class="bi bi-arrow-left"></i></a>
+    </div>
+    <h1 class="text-center dark-mode" style="margin-left: -40px">Task Assessment Overview</h1>
+    <div></div> <!-- Empty div to balance the flex container -->
+  </div>
+
+  <div id="chartContainer" class="mt-5">
+    <h2 class="dark-mode">Task {{ task_id }} All Submissions</h2>
+    {% if data %}
+    <canvas id="taskChart" width="400" height="200"></canvas>
+    {% else %}
+    <p class="text-center text-danger">{{ message }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% if data %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const data = {{ data | tojson }};
+
+    function displayChart(submissions) {
+      const chartContainer = document.getElementById('chartContainer');
+      chartContainer.style.display = 'block';
+
+      const submissionTimes = [];
+      const submissionResults = [];
+      const backgroundColors = [];
+
+      submissions.forEach((submission, submissionIndex) => {
+        submissionTimes.push(`Submission ${submissionIndex + 1}`);
+        submissionResults.push(submission[0]);
+        backgroundColors.push(submission[1] ? 'rgba(75, 192, 192, 0.2)' : 'rgba(255, 99, 132, 0.2)');
+      });
+
+      const ctx = document.getElementById('taskChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: submissionTimes,
+          datasets: [{
+            label: 'Time Taken (ms)',
+            data: submissionResults,
+            backgroundColor: backgroundColors,
+            borderColor: backgroundColors.map(color => color.replace('0.2', '1')),
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    }
+
+    if (data && data.Questions && data.Questions[0] && data.Questions[0].Submissions) {
+      displayChart(data.Questions[0].Submissions);
+    } else {
+      alert('No submissions found for this task.');
+    }
+  });
+</script>
+{% endif %}
+</body>
+
+</html>

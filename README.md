@@ -9,6 +9,10 @@ This project aims to create an e-learning and assessment web application to help
 - Deep dive questions for further assessment
 - Learning analytics and assessment overview
 
+## Image Collection
+![img.png](README_IMG/img.png)
+![img.png](README_IMG/img.png)
+
 ## Important Files
 
 - `app.py`: Main application script
