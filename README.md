@@ -1,37 +1,64 @@
 # E-Learning and Assessment Web Application
 
-This project aims to create an e-learning and assessment web application to help users learn basic coding principles. Users receive a main task prompting them to complete coding exercises, and after successful completion, they can answer some deep dive questions.
+## Project Overview
+This project was developed as part of a Group Project during the **E-Assessment and E-Learning** course at **Ludwig Maximilian University of Munich (LMU)** in the **Summer Semester of 2024**. The goal of this project is to build an interactive **e-learning and assessment web application** that facilitates learning basic coding principles.
 
 ## Features
 
-- Task-based coding exercises
-- Real-time feedback on coding solutions
-- Deep dive questions for further assessment
-- Learning analytics and assessment overview
+- **Task-based coding exercises**: Users are given coding challenges to complete.
+- **Real-time feedback**: Instant evaluation of coding solutions.
+- **Deep dive questions**: Follow-up questions to enhance learning.
+- **Learning analytics**: Visual representation of progress and performance.
 
 ## Image Collection
 
 ![img.png](README_IMG/S1.png)
 
+## Tech Stack
+
+### Frontend
+
+- **HTML5**: Page structure.
+- **CSS3**: Styling (layout, colors, fonts).
+- **JavaScript**: Interactive elements.
+- **Bootstrap**: Responsive UI components.
+- **CodeMirror**: JavaScript-based code editor.
+
+### Backend
+
+- **Python**: Backend development.
+- **Flask**: Web framework for handling requests.
+- **Jinja2**: Template rendering engine.
+
+### Data Storage
+
+- **JSON**: Storing user data and task results.
+
+### Visualization
+
+- **Chart.js**: Interactive data visualization.
+
+### Development Tools
+
+- **virtualenv**: Isolated environment management.
+- **pip**: Dependency installation.
 
 ## Important Files
 
-- `app.py`: Main application script
-- `deepdive.py`: Script for handling deep dive questions
-- `LA_manager.py`: Learning analytics manager script
-- `tasks.py`: Script for managing tasks
-- `templates/`: HTML templates
-- `static/`: Static files (CSS, JS, images)
-- `requirements.txt`: List of required packages
-
-
+- `app.py`: Main application script.
+- `deepdive.py`: Handles deep dive questions.
+- `LA_manager.py`: Learning analytics management.
+- `tasks.py`: Manages coding tasks.
+- `templates/`: HTML templates.
+- `static/`: CSS, JavaScript, images.
+- `requirements.txt`: List of dependencies.
 
 ## Setup Instructions
 
 ### Prerequisites
 
-- Python 3.6 or higher
-- Virtualenv
+- **Python 3.6+**
+- **Virtualenv**
 
 ### Cloning the Repository
 
@@ -40,30 +67,39 @@ git clone <https://gitlab.lrz.de/cristian.gavriliu/e-assessment.git>
 cd <repository-directory>
 ```
 
-## Setting Up the Virtual Environment
+### Setting Up the Virtual Environment
+
 1. **Create a virtual environment:**
+
 ```bash
 python3 -m venv venv
-  ``` 
+```
+
 2. **Activate the virtual environment:**
-   <br>  On Windows:
+
+   - **Windows:**
+
    ```bash
-      venv\Scripts\activate
+   venv\Scripts\activate
    ```
-      On macOS and Linux:
+
+   - **macOS/Linux:**
+
    ```bash
-      source venv/bin/activate
+   source venv/bin/activate
    ```
-3. **Install the required packages:**
+
+3. **Install required packages:**
+
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Freezing the requirements (only neccecary during development to add new requirements to list)
+4. **Freeze dependencies (for development use only):**
+
 ```bash
 pip freeze > requirements.txt
 ```
-
 
 ## Running the Application
 
@@ -71,31 +107,3 @@ pip freeze > requirements.txt
 python app.py
 ```
 
-## Tech Stack
-
-### Frontend
-
-- **HTML5**: Used for structuring the web pages.
-- **CSS3**: Used for styling the web pages, including layout, colors, and fonts.
-- **JavaScript**: Used to create interactive elements on the web pages.
-- **Bootstrap**: Front-end framework for faster and easier web development, providing responsive design and pre-styled components.
-- **CodeMirror**: Browser-based text editor implemented in JavaScript, used for creating the code editor interface.
-
-### Backend
-
-- **Python**: Programming language used for backend development.
-- **Flask**: Micro web framework for Python, used to build the web application and handle HTTP requests.
-- **Jinja2**: Templating engine for Python, used by Flask for rendering HTML templates with dynamic data.
-
-### Data Storage
-
-- **JSON**: Lightweight data interchange format used to store user data and task results.
-
-### Visualization
-
-- **Chart.js**: JavaScript library used for creating interactive charts to visualize data.
-
-### Development Tools
-
-- **virtualenv**: Tool for creating isolated Python environments, ensuring that dependencies are managed on a per-project basis.
-- **pip**: Package installer for Python, used to install the required dependencies.
