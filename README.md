@@ -10,7 +10,7 @@ This project was developed as part of a Group Project during the **E-Assessment 
 - **Deep dive questions**: Follow-up questions to enhance learning.
 - **Learning analytics**: Visual representation of progress and performance.
 
-## Image Collection
+## Image
 
 ![img.png](README_IMG/S1.png)
 
