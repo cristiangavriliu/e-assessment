@@ -128,3 +128,8 @@ python app.py
 ## License
 
 This project is for **personal use only** and is intended as a reference point for the projects I have completed during my studies.
+
+---
+
+For further details, refer to the **final project presentation**.
+
