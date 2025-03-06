@@ -16,6 +16,13 @@ This project was developed as part of a Group Project during the **"E-Assessment
 
 ## Tech Stack
 
+### Backend
+
+- **Python**: Backend development.
+- **Flask**: Web framework for handling requests.
+- **Jinja2**: Template rendering engine.
+- **OpenAI API**: Used for generating feedback on user submissions.
+
 ### Frontend
 
 - **HTML5**: Page structure.
@@ -24,12 +31,6 @@ This project was developed as part of a Group Project during the **"E-Assessment
 - **Bootstrap**: Responsive UI components.
 - **CodeMirror**: JavaScript-based code editor.
 
-### Backend
-
-- **Python**: Backend development.
-- **Flask**: Web framework for handling requests.
-- **Jinja2**: Template rendering engine.
-- **OpenAI API**: Used for generating feedback on user submissions.
 
 ### Data Storage
 
