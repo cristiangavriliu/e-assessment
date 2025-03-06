@@ -1,7 +1,7 @@
 # E-Learning and Assessment Web Application
 
 ## Project Overview
-This project was developed as part of a Group Project during the **E-Assessment & Learning Analytics** course at **Ludwig Maximilian University of Munich (LMU)** in the **Summer Semester of 2024**. The goal of this project is to build an interactive **e-learning and assessment web application** that facilitates learning basic coding principles.
+This project was developed as part of a Group Project during the **"E-Assessment & Learning Analytics"** course at **Ludwig Maximilian University of Munich (LMU)** in the **Summer Semester of 2024**. The goal of this project is to build an interactive **e-learning and assessment web application** that facilitates learning basic coding principles.
 
 ## Features
 
@@ -106,6 +106,12 @@ pip freeze > requirements.txt
 ### Configuring the OpenAI API Key
 To enable real-time feedback, update the **API key** in `app.py` where necessary.
 
+## Running the Application
+
+```bash
+python app.py
+```
+
 ## Dependencies
 The application requires the following packages (from `requirements.txt`):
 
@@ -118,9 +124,17 @@ The application requires the following packages (from `requirements.txt`):
 - **Itsdangerous (2.2.0)** - Security-related utilities
 - **MarkupSafe (2.1.5)** - String escaping and security improvements
 
-## Running the Application
+## Team Members
 
-```bash
-python app.py
-```
+| Member     | Current Position |
+| ------ | ------ |
+| Nina Mandl  | LMU, M.Sc. HCI |
+| Cristian Gavriliu  | LMU, M.Sc. HCI |
+| Leon Osku | LMU, M.Sc. HCI  |
+| Mert Türkekul | LMU, M.Sc. HCI |
 
+
+
+## License
+
+This project is for **personal use only** and is intended as a reference point for the projects I have completed during my studies.
