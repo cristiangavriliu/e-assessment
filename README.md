@@ -112,17 +112,6 @@ To enable real-time feedback, update the **API key** in `app.py` where necessary
 python app.py
 ```
 
-## Dependencies
-The application requires the following packages (from `requirements.txt`):
-
-- **Flask (3.0.3)** - Web framework for Python
-- **Jinja2 (3.1.4)** - Templating engine
-- **Werkzeug (3.0.3)** - WSGI utility library
-- **OpenAI (0.28)** - API client for OpenAI-based feedback
-- **Click (8.1.7)** - Command-line interface support
-- **Blinker (1.8.2)** - Event signaling support
-- **Itsdangerous (2.2.0)** - Security-related utilities
-- **MarkupSafe (2.1.5)** - String escaping and security improvements
 
 ## Team Members
 
